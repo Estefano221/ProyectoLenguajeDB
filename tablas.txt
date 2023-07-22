@@ -1,0 +1,433 @@
+--------------------------------------------------------
+-- Archivo creado  - viernes-julio-21-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table EMPLEADOS
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."EMPLEADOS" 
+   (	"ID_EMPLEADO" NUMBER(20,0), 
+	"NOMBRE" VARCHAR2(20 BYTE), 
+	"PRIMER_APELLIDO" VARCHAR2(20 BYTE), 
+	"SEGUNDO_APELLIDO" VARCHAR2(20 BYTE), 
+	"TELEFONO" NUMBER(11,0), 
+	"EMAIL" VARCHAR2(20 BYTE), 
+	"PUESTO" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table FACTURACION
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."FACTURACION" 
+   (	"ID_FACTURAS" NUMBER(20,0), 
+	"ID_MATERIALES" NUMBER(20,0), 
+	"FECHA_FACTURA" DATE, 
+	"MONTO" NUMBER(20,2)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table HERRAMIENTAS
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."HERRAMIENTAS" 
+   (	"ID_HERRAMIENTA" NUMBER(20,0), 
+	"NOMBRE" VARCHAR2(20 BYTE), 
+	"TIPO_HERRAMIENTA" VARCHAR2(20 BYTE), 
+	"USO_HERRAMIENTA" VARCHAR2(20 BYTE), 
+	"ID_PROVEEDORES" NUMBER(20,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table HISTORIAL_PRESTAMOS
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."HISTORIAL_PRESTAMOS" 
+   (	"ID_HISTORIAL" NUMBER(20,0), 
+	"ID_EMPLEADO" NUMBER(20,0), 
+	"ID_HERRAMIENTA" NUMBER(20,0), 
+	"ID_RESERVAS" NUMBER(20,0), 
+	"ID_MANTENIMIENTO" NUMBER(20,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table MANTENIMIENTO
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."MANTENIMIENTO" 
+   (	"ID_MANTENIMIENTO" NUMBER(20,0), 
+	"ID_HERRAMIENTA" NUMBER(20,0), 
+	"FECHA_INGRESO" DATE, 
+	"FECHA_EGRESO" DATE
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table MATERIALES
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."MATERIALES" 
+   (	"ID_MATERIALES" NUMBER(20,0), 
+	"ID_PROVEEDORES" NUMBER(20,0), 
+	"NOMBRE" VARCHAR2(20 BYTE), 
+	"FECHA_INGRESO" DATE, 
+	"FECHA_EGRESO" DATE, 
+	"TAMAÑO" NUMBER(20,0), 
+	"CANTIDAD" NUMBER(20,0), 
+	"USO" VARCHAR2(20 BYTE), 
+	"PRECIO" NUMBER(20,2)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table NOTIFICACIONES
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."NOTIFICACIONES" 
+   (	"ID_NOTIFICACIONES" NUMBER(20,0), 
+	"ID_HISTORIAL" NUMBER(20,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table PROVEEDORES
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."PROVEEDORES" 
+   (	"ID_PROVEEDORES" NUMBER(20,0), 
+	"NOMBRE_EMPRESA" VARCHAR2(20 BYTE), 
+	"PRODUCTO_SOLICITADO" VARCHAR2(20 BYTE), 
+	"CEDULA_EMPRESA" NUMBER(20,0), 
+	"FECHA_PEDIDO" DATE
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table RESERVAS
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."RESERVAS" 
+   (	"ID_RESERVAS" NUMBER(20,0), 
+	"ID_EMPLEADO" NUMBER(20,0), 
+	"ID_HERRAMIENTA" NUMBER(20,0), 
+	"FECHA_INGRESO" DATE, 
+	"FECHA_EGRESO" DATE, 
+	"ESTADO_HERRAMIENTA" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table USUARIOS
+--------------------------------------------------------
+
+  CREATE TABLE "GARCIA"."USUARIOS" 
+   (	"ID_USUARIO" NUMBER(20,0), 
+	"ID_MATERIALES" NUMBER(20,0), 
+	"CONTRASEÑA" NUMBER(20,0), 
+	"NOMBRE" VARCHAR2(50 BYTE), 
+	"TELEFONO" NUMBER(20,0), 
+	"EMAIL" VARCHAR2(50 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+REM INSERTING into GARCIA.EMPLEADOS
+SET DEFINE OFF;
+REM INSERTING into GARCIA.FACTURACION
+SET DEFINE OFF;
+REM INSERTING into GARCIA.HERRAMIENTAS
+SET DEFINE OFF;
+REM INSERTING into GARCIA.HISTORIAL_PRESTAMOS
+SET DEFINE OFF;
+REM INSERTING into GARCIA.MANTENIMIENTO
+SET DEFINE OFF;
+REM INSERTING into GARCIA.MATERIALES
+SET DEFINE OFF;
+REM INSERTING into GARCIA.NOTIFICACIONES
+SET DEFINE OFF;
+REM INSERTING into GARCIA.PROVEEDORES
+SET DEFINE OFF;
+REM INSERTING into GARCIA.RESERVAS
+SET DEFINE OFF;
+REM INSERTING into GARCIA.USUARIOS
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index SYS_C007760
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007760" ON "GARCIA"."PROVEEDORES" ("ID_PROVEEDORES") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007761
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007761" ON "GARCIA"."MATERIALES" ("ID_MATERIALES") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007763
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007763" ON "GARCIA"."USUARIOS" ("ID_USUARIO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007765
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007765" ON "GARCIA"."FACTURACION" ("ID_FACTURAS") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007767
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007767" ON "GARCIA"."MANTENIMIENTO" ("ID_MANTENIMIENTO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007768
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007768" ON "GARCIA"."EMPLEADOS" ("ID_EMPLEADO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007769
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007769" ON "GARCIA"."HERRAMIENTAS" ("ID_HERRAMIENTA") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007771
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007771" ON "GARCIA"."RESERVAS" ("ID_RESERVAS") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007775
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007775" ON "GARCIA"."NOTIFICACIONES" ("ID_NOTIFICACIONES") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007778
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007778" ON "GARCIA"."HISTORIAL_PRESTAMOS" ("ID_HISTORIAL") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007768
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007768" ON "GARCIA"."EMPLEADOS" ("ID_EMPLEADO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007765
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007765" ON "GARCIA"."FACTURACION" ("ID_FACTURAS") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007769
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007769" ON "GARCIA"."HERRAMIENTAS" ("ID_HERRAMIENTA") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007778
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007778" ON "GARCIA"."HISTORIAL_PRESTAMOS" ("ID_HISTORIAL") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007767
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007767" ON "GARCIA"."MANTENIMIENTO" ("ID_MANTENIMIENTO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007761
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007761" ON "GARCIA"."MATERIALES" ("ID_MATERIALES") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007775
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007775" ON "GARCIA"."NOTIFICACIONES" ("ID_NOTIFICACIONES") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007760
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007760" ON "GARCIA"."PROVEEDORES" ("ID_PROVEEDORES") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007771
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007771" ON "GARCIA"."RESERVAS" ("ID_RESERVAS") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index SYS_C007763
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "GARCIA"."SYS_C007763" ON "GARCIA"."USUARIOS" ("ID_USUARIO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table EMPLEADOS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."EMPLEADOS" ADD PRIMARY KEY ("ID_EMPLEADO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FACTURACION
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."FACTURACION" ADD PRIMARY KEY ("ID_FACTURAS")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table HERRAMIENTAS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."HERRAMIENTAS" ADD PRIMARY KEY ("ID_HERRAMIENTA")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table HISTORIAL_PRESTAMOS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."HISTORIAL_PRESTAMOS" ADD PRIMARY KEY ("ID_HISTORIAL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table MANTENIMIENTO
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."MANTENIMIENTO" ADD PRIMARY KEY ("ID_MANTENIMIENTO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "GARCIA"."MANTENIMIENTO" MODIFY ("ID_HERRAMIENTA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table MATERIALES
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."MATERIALES" ADD PRIMARY KEY ("ID_MATERIALES")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table NOTIFICACIONES
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."NOTIFICACIONES" ADD PRIMARY KEY ("ID_NOTIFICACIONES")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PROVEEDORES
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."PROVEEDORES" ADD PRIMARY KEY ("ID_PROVEEDORES")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table RESERVAS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."RESERVAS" ADD PRIMARY KEY ("ID_RESERVAS")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table USUARIOS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."USUARIOS" ADD PRIMARY KEY ("ID_USUARIO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FACTURACION
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."FACTURACION" ADD FOREIGN KEY ("ID_MATERIALES")
+	  REFERENCES "GARCIA"."MATERIALES" ("ID_MATERIALES") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table HERRAMIENTAS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."HERRAMIENTAS" ADD FOREIGN KEY ("ID_PROVEEDORES")
+	  REFERENCES "GARCIA"."PROVEEDORES" ("ID_PROVEEDORES") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table HISTORIAL_PRESTAMOS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."HISTORIAL_PRESTAMOS" ADD FOREIGN KEY ("ID_EMPLEADO")
+	  REFERENCES "GARCIA"."EMPLEADOS" ("ID_EMPLEADO") ENABLE;
+  ALTER TABLE "GARCIA"."HISTORIAL_PRESTAMOS" ADD FOREIGN KEY ("ID_HERRAMIENTA")
+	  REFERENCES "GARCIA"."HERRAMIENTAS" ("ID_HERRAMIENTA") ENABLE;
+  ALTER TABLE "GARCIA"."HISTORIAL_PRESTAMOS" ADD FOREIGN KEY ("ID_RESERVAS")
+	  REFERENCES "GARCIA"."RESERVAS" ("ID_RESERVAS") ENABLE;
+  ALTER TABLE "GARCIA"."HISTORIAL_PRESTAMOS" ADD FOREIGN KEY ("ID_MANTENIMIENTO")
+	  REFERENCES "GARCIA"."MANTENIMIENTO" ("ID_MANTENIMIENTO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table MATERIALES
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."MATERIALES" ADD FOREIGN KEY ("ID_PROVEEDORES")
+	  REFERENCES "GARCIA"."PROVEEDORES" ("ID_PROVEEDORES") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RESERVAS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."RESERVAS" ADD FOREIGN KEY ("ID_EMPLEADO")
+	  REFERENCES "GARCIA"."EMPLEADOS" ("ID_EMPLEADO") ENABLE;
+  ALTER TABLE "GARCIA"."RESERVAS" ADD FOREIGN KEY ("ID_HERRAMIENTA")
+	  REFERENCES "GARCIA"."HERRAMIENTAS" ("ID_HERRAMIENTA") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table USUARIOS
+--------------------------------------------------------
+
+  ALTER TABLE "GARCIA"."USUARIOS" ADD FOREIGN KEY ("ID_MATERIALES")
+	  REFERENCES "GARCIA"."MATERIALES" ("ID_MATERIALES") ENABLE;
